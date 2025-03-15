@@ -1,6 +1,17 @@
+import os
+from dotenv import load_dotenv
 from openai import OpenAI
 
-client = OpenAI()
+# Load environment variables from .env file
+load_dotenv()
+
+# Initialize the client with API key from environment variable
+client = OpenAI(api_key=os.getenv("OPENAI_API_KEY"))
+print(os.getenv("OPENAI_API_KEY"))
+
+# Validate environment variables
+if not os.getenv("OPENAI_API_KEY"):
+    raise ValueError("OPENAI_API_KEY environment variable is not set")
 
 """
 https://platform.openai.com/docs/api-reference/responses
@@ -11,7 +22,7 @@ https://platform.openai.com/docs/api-reference/responses
 # --------------------------------------------------------------
 
 response = client.chat.completions.create(
-    model="gpt-4o",
+    model="gpt-4o-mini",
     messages=[
         {
             "role": "user",
@@ -28,7 +39,7 @@ print(response.choices[0].message.content)
 # --------------------------------------------------------------
 
 response = client.responses.create(
-    model="gpt-4o", input="Write a one-sentence bedtime story about a unicorn."
+    model="gpt-4o-mini", input="Write a one-sentence bedtime story about a unicorn."
 )
 
 print(response.output_text)
@@ -38,7 +49,7 @@ print(response.output_text)
 # --------------------------------------------------------------
 
 response = client.responses.create(
-    model="gpt-4o",
+    model="gpt-4o-mini",
     input=[
         {"role": "user", "content": "what teams are playing in this image?"},
         {
@@ -60,7 +71,7 @@ print(response.output_text)
 # --------------------------------------------------------------
 
 stream = client.responses.create(
-    model="gpt-4o",
+    model="gpt-4o-mini",
     input="Say 'double bubble bath' ten times fast.",
     stream=True,
 )
