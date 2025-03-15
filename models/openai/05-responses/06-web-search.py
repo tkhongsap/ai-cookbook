@@ -23,7 +23,7 @@ response = client.responses.create(
             "type": "web_search_preview",
         }
     ],
-    input="What are the best Michelin starred restaurants around Bangkok?",
+    input="what are the top 3 Michelin starred restaurants around Bangkok? Tell me the name, rating and a bit about the restaurant.",
 )
 
 print(f"{BLUE}=== BASIC WEB SEARCH RESULTS ==={RESET}")
@@ -45,7 +45,7 @@ response = client.responses.create(
             },
         }
     ],
-    input="What are the best Michelin starred restaurants around Bangkok?",
+    input="what are the top 3 Michelin starred restaurants around Bangkok? Tell me the name, rating and a bit about the restaurant.",
 )
 
 print(f"{PINK}=== WEB SEARCH WITH LOCATION RESULTS ==={RESET}")
