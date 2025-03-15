@@ -1,6 +1,11 @@
+import os
+from dotenv import load_dotenv
 from openai import OpenAI
 
-client = OpenAI()
+# Load environment variables from .env file
+load_dotenv()
+
+client = OpenAI(api_key=os.getenv("OPENAI_API_KEY"))
 
 
 # --------------------------------------------------------------
@@ -8,7 +13,7 @@ client = OpenAI()
 # --------------------------------------------------------------
 
 response = client.responses.create(
-    model="gpt-4o",
+    model="gpt-4o-mini",
     tools=[
         {
             "type": "web_search_preview",
@@ -24,7 +29,7 @@ print(response.output_text)
 # --------------------------------------------------------------
 
 response = client.responses.create(
-    model="gpt-4o",
+    model="gpt-4o-mini",
     tools=[
         {
             "type": "web_search_preview",
