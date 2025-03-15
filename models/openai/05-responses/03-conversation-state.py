@@ -1,6 +1,12 @@
+import os
+from dotenv import load_dotenv
 from openai import OpenAI
 
-client = OpenAI()
+# Load environment variables from .env file
+load_dotenv()
+
+# Initialize the client with API key from environment variable
+client = OpenAI(api_key=os.getenv("OPENAI_API_KEY"))
 
 """
 https://platform.openai.com/docs/guides/conversation-state?api-mode=responses
